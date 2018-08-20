@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>RMB-AR.otfx</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="aframe.0.8.1.min.js"></script>
+    <script src="aframe-ar.js"></script>
+    <script src="aframe-animation-component.min.js"></script>
+    <script src="main.js"></script>
+  </head>
+  
+  <body class="AR-container">
+    <div id="splash">
+      <div class="loading"></div>
+      <div class="start-button">Start</div>
+    </div>
+    
+    <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; areaLearningButton: false; debug: false;"
+    fog="color: #50bfe7; far: 0; type: linear;" shadow="receive: true; cast: true;">
+      
+      <a-anchor hit-testing-enabled="false">
+        
+        <a-entity id="anchor-inner-container">
+          
+          <a-entity id="anchor-local-container">
+            
+            <a-entity id="rmb" position="0.00 -0.01 -0.25" rotation="0 0 0" visible="true" animation="startEvents: scene-started; property: position; to: 0 0 0.5; dur: 2000; easing: linear; elasticity: 400; delay: 3000; dir: normal; loop: 0; ">
+              
+              <a-box id="box" position="0 -0.1 0.25" rotation="0 0 0" scale="0.9 0.05 0.5" geometry="width: 1; height: 1; depth: 1;"
+              material="color: #e21c1c; opacity: 0.6; shader: standard; side: double; metalness: 1; roughness: 1; repeat: 1 1;"
+              shadow="cast: true; receive: true;" visible="true"></a-box>
+              
+              <a-text id="text" position="0 0 0.25" rotation="-90 0 0" scale="0.5 0.5 0.5"
+              text="value: Y 138 RMB; font: assets/SourceSansPro-Semibold.fnt; align: center; opacity: 0; color: #ffffff; wrapCount: 36; letterSpacing: 0; lineHeight: 64; width: 6; height: 0; side: double; anchor: center;"
+              shadow="cast: true; receive: true;" visible="true" animation="startEvents: scene-started; property: text.opacity; to: 1; dur: 2000; easing: linear; elasticity: 400; delay: 3500; dir: normal; loop: 0; "></a-text>
+            </a-entity>
+            
+            <a-light id="point-light-1" light="castShadow: false; color: #ffffff; distance: 0; intensity: 1; type: point;"
+            position="0 7 5" visible="true"></a-light>
+          </a-entity>
+        </a-entity>
+      </a-anchor><a-camera-static/></a-scene>
+    <div id="anchor-scene-button"></div>
+    <div id="rotate-scene-button"></div>
+  </body>
+
+</html>
