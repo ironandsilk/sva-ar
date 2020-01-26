@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AR Runners Customizer</title>
+    <meta name="description" content="Interactions - A-Frame">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  
+
+  </head>
+  <body>
+    <a-scene inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+      <a-assets>
+        <img id="groundTexture" src="https://cdn.glitch.com/d0303c13-33bf-49fc-b330-1fdec0b6d508%2Fwhite-marble.png?v=1566494232106">  
+        <a-asset-item id="shoe" src="https://cdn.glitch.com/d0303c13-33bf-49fc-b330-1fdec0b6d508%2F507%20Shoes.gltf?v=1566493666195"></a-asset-item>
+         
+        <img id="blends" src="https://cdn.glitch.com/e54d4ee5-79b9-412c-a5fe-a616ee4aae26%2Fblends-small.png?1516384871062"/>
+          <a-asset-item id="shoe-mtl" src="https://cdn.glitch.com/e54d4ee5-79b9-412c-a5fe-a616ee4aae26%2Fam90.mtl?1516382961568"></a-asset-item>
+          <a-asset-item id="shoe-obj" src="https://cdn.glitch.com/e54d4ee5-79b9-412c-a5fe-a616ee4aae26%2Fam90.obj?1516382961549"></a-asset-item>
+      </a-assets>
+
+      <a-sky src="#blends"></a-sky>
+      
+      <a-camera position="0 1.65 0">
+        <a-cursor></a-cursor>
+      </a-camera>
+     
+      
+      <a-entity laser-controls="hand: left"></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
+      
+      <a-text value="AR Runners 🏃!" position="0 4 -5" color="#000" scale="1.2 1.2 1.2"></a-text>
+      <a-text value="Select a new shoe color by gazing at the color orbs below." position="-1.5 3.6 -5" color="#000"></a-text>
+
+      <a-sphere position="-2 1 -4" rotation="0 90 30" scale="0.3 0.3 0.3" color="#F44336"
+                  event-set__enter="_event: mouseenter; _target: #bg; color: #F44336">
+      </a-sphere>
+      
+      <a-sphere position="-1 1 -4" rotation="0 45 45" scale="0.3 0.3 0.3" color="#2196F3"
+                  event-set__enter="_event: mouseenter; _target: #bg; color: #2196F3">
+      </a-sphere>
+      
+      <a-sphere position="0 1 -4" rotation="0 45 30" scale="0.3 0.3 0.3" color="#009688"
+                  event-set__enter="_event: mouseenter; _target: #bg; color: #009688">            
+      </a-sphere>
+      
+      <a-sphere position="1 1 -4" rotation="0 70 30" scale="0.3 0.3 0.3" color="#E91E63"
+                  event-set__enter="_event: mouseenter; _target: #bg; color: #E91E63">
+      </a-sphere>
+      
+      <a-sphere position="2 1 -4" rotation="0 70 30" scale="0.3 0.3 0.3" color="#E91E63"
+                  event-set__enter="_event: mouseenter; _target: #bg; color: #E91E63">
+      </a-sphere>
+      
+      
+      <a-box id="bg" position="0 2.8 -3" scale="1.526 0.993 0.83" color="#F44336" material="opacity:0.5;transparent:true">
+      </a-box>
+      
+      <a-entity obj-model="obj: #shoe-obj; mtl: #shoe-mtl"
+          position="0 2.5 -3"
+          scale=".05 .05 .05">
+
+            <a-animation attribute="rotation" begin="click" repeat="indefininte"  to="0 360 0">
+            </a-animation>
+
+            <a-event name="click" scale=".075 .075 .075"> </a-event>
+      </a-entity>  
+      
+      <a-gltf-model src="#shoe"
+                position="0 1.7 -3" rotation="0 70 30" scale="1 1 1">
+      </a-gltf-model>
+
+      
+      <a-entity gltf-model="https://cdn.glitch.com/d0303c13-33bf-49fc-b330-1fdec0b6d508%2F507%20Shoes.gltf?v=1566493666195"
+                position="0 1.5 -3" rotation="0 70 30" scale="1 1 1">
+      </a-entity>
+
+    <a-link position="3 1.5 3" rotation="0 0 0" scale="0.5 0.5 0.5" href="https://mixed-reality-home.glitch.me" title="Destination 2 Customizer"></a-link>
+
+      
+
+      <a-plane id="floor" src="#groundTexture" position="0 -.25 0" rotation="-90 0 0" width="20" height="20" repeat="50"></a-plane>
+
+     
+    </a-scene>
+  </body>
+</html>
